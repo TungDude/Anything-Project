@@ -7,5 +7,5 @@ Javascript, React, Tailwind
 # Backend
 Flask, MongoDB (MongoEngine)
 
-# Others
-Docker
+# Docker compose build
+docker-compose up --build
