@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./Frontend
+    ports:
+      - "3000:3000"  # Frontend accessible on port 3000
+    environment:
+      - REACT_APP_BACKEND_URL=http://127.0.0.1:5000
+    networks:
+      - app-network
+
+  backend:
+    build: ./Backend
+    ports:
+      - "5000:5000"  # Backend accessible on port 5000
+    environment:
+      - CORS_ORIGINS=http://localhost:3000
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
