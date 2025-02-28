@@ -5,7 +5,7 @@ Anything that comes to mind - Frontend and Backend
 Javascript, React, Tailwind
 
 # Backend
-Flask, MongoDB (MongoEngine)
+Python, Flask, MongoDB (MongoEngine)
 
 # Docker compose build
 docker-compose up --build
