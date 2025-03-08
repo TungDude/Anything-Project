@@ -5,7 +5,7 @@ import { Menu, User } from 'lucide-react';
 import { useAuthContext } from '../../../../contexts/AuthContext';
 import { cn } from '../../../../lib/utils';
 
-const Header = () => {
+const Header = ({ toggleNavbar }) => {
     const { isAuthenticated } = useAuthContext();
     const navigate = useNavigate();
     const [key, setKey] = useState(0);
@@ -20,9 +20,13 @@ const Header = () => {
             <div className="flex w-full items-center justify-between">
                 {/* Menu aligned to the left */}
                 <div
-                    className="w-[36px] h-auto"
+                    className="flex justify-center w-[36px] h-auto rounded-sm hover:bg-gray-600"
                 >
-                    <Menu color="white" />
+                    <Menu 
+                        color="white" 
+                        onClick={toggleNavbar}
+                        className="cursor-pointer"
+                    />
                 </div>
 
                 {/* Logo on the center */}
@@ -31,7 +35,7 @@ const Header = () => {
                     onClick={handleClickLogo}
                 >
                     <img
-                        className="h-16 w-auto hidden sm:block" // Keep ratio
+                        className="h-16 w-auto sm:block" // Keep ratio
                         src="/images/main_logo.png"
                         alt="Logo"
                     />
@@ -42,12 +46,11 @@ const Header = () => {
                             "animate-typing",
                             "text-lg",
                         )}
-                    // className="font-semibold text-xl tracking-[2px] hover:text-gray-400"
                     >
                         Anything Project
                     </span>
                     <img
-                        className="h-16 w-auto hidden sm:block" // Keep ratio
+                        className="h-16 w-auto sm:block" // Keep ratio
                         src="/images/main_logo.png"
                         alt="Logo"
                     />
@@ -55,10 +58,10 @@ const Header = () => {
 
                 {/* Navigation aligned to the right */}
                 <div
-                    className="w-[36px] h-auto"
+                    className="flex justify-center w-[36px] h-auto"
                 >
                     <Link to="/login" className="text-white hover:text-gray-400 hover:underline">
-                        { isAuthenticated ?  <User color="white" /> : "Login" }
+                        {isAuthenticated ? <User color="white" /> : "Login"}
                     </Link>
                 </div>
 
