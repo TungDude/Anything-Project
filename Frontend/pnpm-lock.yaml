@@ -32,6 +32,9 @@ importers:
       react-scripts:
         specifier: 5.0.1
         version: 5.0.1(@babel/plugin-syntax-flow@7.26.0(@babel/core@7.26.7))(@babel/plugin-transform-react-jsx@7.25.9(@babel/core@7.26.7))(@types/babel__core@7.20.5)(eslint@8.57.1)(react@19.0.0)(type-fest@0.21.3)(typescript@4.9.5)
+      react-social-icons:
+        specifier: ^6.22.0
+        version: 6.22.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       tailwind-merge:
         specifier: ^3.0.1
         version: 3.0.1
@@ -4459,6 +4462,12 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
+
+  react-social-icons@6.22.0:
+    resolution: {integrity: sha512-+KN3yL61+oPR9BqHvMRin7gwfYnzLPFsiyHTTJ6g+AwO5v8rfJ/qWUv3TZqeqInfGmKWobpnLOp4pm48HHaK+A==}
+    peerDependencies:
+      react: 15.x.x || 16.x.x || 17.x.x || 18.x.x
+      react-dom: 15.x.x || 16.x.x || 17.x.x || 18.x.x
 
   react@19.0.0:
     resolution: {integrity: sha512-V8AVnmPIICiWpGfm6GLzCR/W5FXLchHop40W4nXBmdlEceh16rCN8O8LNWm5bh5XUX91fh7KpA+W0TgMKmgTpQ==}
@@ -10860,6 +10869,12 @@ snapshots:
       - webpack-cli
       - webpack-hot-middleware
       - webpack-plugin-serve
+
+  react-social-icons@6.22.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+    dependencies:
+      '@babel/runtime': 7.26.7
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
 
   react@19.0.0: {}
 
