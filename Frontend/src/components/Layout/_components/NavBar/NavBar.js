@@ -1,34 +1,29 @@
 import React from 'react';
 import LinkWithHover from './_components/LinkWithHover/LinkWithHover';
 
-const NavBar = () => {
+const NavBar = ({ toggleNavbar }) => {
+  const routeLabels = {
+    "/": "Home",
+    "about-me": "About Me",
+    "not-found": "Not Found",
+    "random": "Random",
+  };
+
   return (
-    <nav>
-      <ul>
-        <li>
+    <nav 
+      className='w-full'
+    >
+      <ul
+        className="space-y-2"
+      >
+        {Object.entries(routeLabels).map(([path, label]) => (
           <LinkWithHover
-            path="/"
-            label="Home"
+            key={path}
+            path={path}
+            label={label}
+            onClick={toggleNavbar}
           />
-        </li>
-        <li>
-          <LinkWithHover
-            path="/about-me"
-            label="About Me"
-          />
-        </li>
-        <li>
-          <LinkWithHover
-            path="/not-found"
-            label="Not Found"
-          />
-        </li>
-        <li>
-          <LinkWithHover
-            path="/random"
-            label="Random"
-          />
-        </li>
+        ))}
       </ul>
     </nav>
   );

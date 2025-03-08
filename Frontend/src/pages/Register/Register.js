@@ -84,7 +84,7 @@ const Register = () => {
             <Button
                 label={"Register"}
                 onClick={handleClickCreateUser}
-                className={"my-2 w-full"}
+                className={"my-2 w-[171px]"}
             />
         </>
     );
