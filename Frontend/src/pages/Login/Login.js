@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { Link } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import TextInput from "../../components/Input/TextInput/TextInput";
 import { useAuthContext } from "../../contexts/AuthContext";
@@ -26,7 +27,7 @@ const Login = () => {
         }
 
         login({
-            username: username.current.value, 
+            username: username.current.value,
             password: password.current.value
         });
     }
@@ -84,8 +85,11 @@ const Login = () => {
             <Button
                 onClick={handleClickLogin}
                 label={"Login"}
-                className={"my-2 w-full"}
+                className={"my-2 w-[171px]"}
             />
+            <Link to="/register" className="text-black underline hover:text-gray-400">
+                No account? Register
+            </Link>
             {isAuthenticated && (
                 <>
                     <Button
