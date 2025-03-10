@@ -1,12 +1,13 @@
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import TextInput from "../../components/Input/TextInput/TextInput";
 import { useAuthContext } from "../../contexts/AuthContext";
-import RequestController from "../../controller/RequestController";
+// import RequestController from "../../controller/RequestController";
 
 const Login = () => {
-    const { isAuthenticated, login } = useAuthContext();
+    const navigate = useNavigate();
+    const { login } = useAuthContext();
     const username = useRef(null);
     const password = useRef(null);
 
@@ -19,24 +20,26 @@ const Login = () => {
         return errors.username || errors.password;
     };
 
-    const handleClickLogin = () => {
+    const handleClickLogin = async () => {
         const error = validateInput();
 
         if (error) {
             return;
         }
 
-        login({
-            username: username.current.value,
-            password: password.current.value
-        });
-    }
-
-    const handleTestLoggedIn = () => {
-        RequestController.TestProtected({})
-            .then(response => {
-                console.log(response);
-            })
+        try {
+            await login({
+                username: username.current.value,
+                password: password.current.value,
+            });
+    
+            // Navigate only if login was successful
+            navigate("/");
+        } catch (err) {
+            username.current.value = "";
+            password.current.value = "";
+            console.error(err);  // Handle login failure
+        }
     }
 
     return (
@@ -90,14 +93,6 @@ const Login = () => {
             <Link to="/register" className="text-black underline hover:text-gray-400">
                 No account? Register
             </Link>
-            {isAuthenticated && (
-                <>
-                    <Button
-                        onClick={handleTestLoggedIn}
-                        label={'Test Logged in'}
-                    />
-                </>
-            )}
         </>
     )
 }

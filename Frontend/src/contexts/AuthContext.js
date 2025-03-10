@@ -41,16 +41,23 @@ export function AuthProvider({ children }) {
     }, []);
 
     const login = async ({username, password}) => {
-        await RequestController.LoginUser({
-            username: username,
-            password: password,
-        })
-            .then((response) => {
-                console.log(response);
+        return new Promise(async (resolve, reject) => {
+            try {
+                const response = await RequestController.LoginUser({
+                    username: username,
+                    password: password,
+                });
+    
                 if (response.status === 200) {
-                    setIsAuthenticated(true);  // Set authenticated after login
+                    setIsAuthenticated(true); // Set authenticated after login
+                    resolve(); // Resolve if login is successful
+                } else {
+                    reject("Login failed");
                 }
-            });
+            } catch (error) {
+                reject("An error occurred while logging in");
+            }
+        });
     };
 
     const logout = () => {
