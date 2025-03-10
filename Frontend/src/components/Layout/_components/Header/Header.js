@@ -56,7 +56,7 @@ const Header = ({ toggleNavbar }) => {
                     />
                 </div>
 
-                {/* Navigation aligned to the right */}
+                {/* User icon aligned to the right */}
                 <div
                     className="flex justify-center w-[36px] h-auto"
                 >
@@ -64,16 +64,6 @@ const Header = ({ toggleNavbar }) => {
                         {isAuthenticated ? <User color="white" /> : "Login"}
                     </Link>
                 </div>
-
-                {/* <nav>
-                    <ul className="flex space-x-4">
-                        <li>
-                            <Link to="/login" className="text-white hover:text-gray-400 hover:underline">
-                                Login
-                            </Link>
-                        </li>
-                    </ul>
-                </nav> */}
             </div>
         </>
     );

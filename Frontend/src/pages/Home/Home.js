@@ -1,7 +1,15 @@
 import React from "react";
-// import RequestController from "../../controller/RequestController";
+import AuthProtected from "../../components/AuthProtected/AuthProtected";
+import Button from "../../components/Button/Button";
+import RequestController from "../../controller/RequestController";
 
 const Home = () => {
+    const handleTestLoggedIn = () => {
+        RequestController.TestProtected({})
+            .then(response => {
+                console.log(response);
+            })
+    }
 
     return (
         <>
@@ -11,6 +19,12 @@ const Home = () => {
                 src="/images/cat_logo.gif"
                 alt="Logo"
             />
+            <AuthProtected>
+                <Button
+                    onClick={handleTestLoggedIn}
+                    label={'Test Logged in'}
+                />
+            </AuthProtected>
         </>
     );
 }
