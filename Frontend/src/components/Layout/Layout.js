@@ -21,7 +21,7 @@ const Layout = () => {
       </header>
 
       {/* Main content area (right side) */}
-      <main className="flex flex-grow py-4 bg-white justify-center relative">
+      <main className="flex flex-grow p-4 bg-white justify-center relative">
         <div className="flex flex-col items-center justify-start gap-2">
           {isNavbarOpen &&
             <div
